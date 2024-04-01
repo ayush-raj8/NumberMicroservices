@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  even_odd:
+    build:
+      context: ./even_odd
+    ports:
+      - "50001:50000"
+
+  square:
+    build:
+      context: ./square
+    ports:
+      - "50002:50000"
+
+  cube:
+    build:
+      context: ./cube
+    ports:
+      - "50003:50000"
+  
+  prime:
+    build:
+      context: ./prime
+    ports:
+      - "50004:50000"
+
+  gateway:
+    build:
+      context: ./gateway
+    ports:
+      - "50000:50000"
+    depends_on:
+      - even_odd
+      - square
+      - cube
+      - prime
